@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr4n1kefkvn3u"]
+
+[ext_resource type="Script" path="res://script/DialogSystem.gd" id="1_t5ik5"]
+
+[node name="DialogSystem" type="CanvasLayer"]
+script = ExtResource("1_t5ik5")
+
+[node name="DialogLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+
+[node name="DialogBackground" type="ColorRect" parent="."]
+offset_right = 428.0
+offset_bottom = 294.0
+color = Color(0, 0.0117647, 0.0117647, 0)

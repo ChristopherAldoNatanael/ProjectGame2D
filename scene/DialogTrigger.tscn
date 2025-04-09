@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq4xro4yyq4i5"]
+
+[ext_resource type="Script" path="res://script/DialogTrigger.gd" id="1_mpt3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3or8"]
+size = Vector2(25, 31)
+
+[node name="DialogTrigger" type="Area2D"]
+script = ExtResource("1_mpt3p")
+dialog_texts = Array[String](["\"Selamat datang di Kel 5 Adventure...\\nLangkahkan kakimu, hadapi tantangan, dan temukan takdirmu!\\n\\nGunakan → dan ← untuk bergerak.\\nTekan SPACE untuk melompati rintangan!\""])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 5.5)
+shape = SubResource("RectangleShape2D_w3or8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0nmg82iw0152"]
+
+[ext_resource type="Script" path="res://script/level_trigger.gd" id="1_kx6xb"]
+[ext_resource type="FontFile" uid="uid://o83sieramfve" path="res://assets/font pixel/GrapeSoda.ttf" id="2_tqjjg"]
+[ext_resource type="AudioStream" uid="uid://cw0h4x7logdev" path="res://assets/audio/level.ogg" id="3_e0vuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8uuk"]
+size = Vector2(53, 62)
+
+[node name="LevelTrigger" type="Node2D" node_paths=PackedStringArray("trigger_area")]
+script = ExtResource("1_kx6xb")
+custom_font = ExtResource("2_tqjjg")
+trigger_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-14.5, 21)
+shape = SubResource("RectangleShape2D_v8uuk")
+
+[node name="LevelLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e0vuh")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnvt3f10ncb4"]
+
+[ext_resource type="Script" path="res://script/coin_ui.gd" id="1_g4bu3"]
+
+[node name="Coin_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="Label" type="CanvasLayer" parent="."]
+script = ExtResource("1_g4bu3")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://rk01mvpiwvpg"]
+
+[ext_resource type="Script" path="res://script/block.gd" id="1_ibfoo"]
+[ext_resource type="FontFile" uid="uid://o83sieramfve" path="res://assets/font pixel/GrapeSoda.ttf" id="2_kk3vg"]
+[ext_resource type="AudioStream" uid="uid://dypeme0aitsp8" path="res://assets/audio/BGMusic.ogg" id="3_6hxlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jr2r"]
+size = Vector2(40, 38)
+
+[node name="Block" type="Area2D"]
+script = ExtResource("1_ibfoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 9)
+shape = SubResource("RectangleShape2D_3jr2r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogBackground" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.368627)
+
+[node name="DialogLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kk3vg")
+theme_override_font_sizes/font_size = 30
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("3_6hxlr")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
