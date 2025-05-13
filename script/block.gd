@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var dialog_texts: Array[String] = ["Halo! Ini teks dari block"]
+@export var dialog_texts: Array[String] = ["Apa kekhawatiran utama masyarakat sipil terhadap revisi UU TNI 2025?"]
 @onready var dialog_label: Label = $CanvasLayer/DialogLabel
 @onready var dialog_background: ColorRect = $CanvasLayer/DialogBackground
 @onready var camera: Camera2D = get_tree().get_first_node_in_group("player_camera")
@@ -20,7 +20,6 @@ func _ready():
 	dialog_background.visible = false
 	dialog_label.visible = false
 
-	# Pastikan Audio tetap berjalan meski game di-pause
 	if audio_player:
 		audio_player.process_mode = Node.PROCESS_MODE_ALWAYS  
 
@@ -28,7 +27,7 @@ func _on_body_entered(body):
 	if body.name == "Player" and not is_displaying:
 		player_inside = true
 		print("✅ Player menyentuh block, menampilkan teks...")
-		pause_player()  # Hanya hentikan input, jangan game!
+		pause_player()
 		show_dialog()
 
 func _on_body_exited(body):
@@ -38,14 +37,14 @@ func _on_body_exited(body):
 		close_dialog()
 
 func pause_player():
-	get_tree().paused = true  # Hanya hentikan input
+	get_tree().paused = true
 	if audio_player:
-		audio_player.process_mode = Node.PROCESS_MODE_ALWAYS  # Pastikan musik tetap berjalan
+		audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func resume_player():
-	get_tree().paused = false  # Aktifkan kembali input
+	get_tree().paused = false
 	if audio_player and audio_player.playing:
-		audio_player.stop()  # Hentikan musik saat game berjalan kembali
+		audio_player.stop()
 
 func show_dialog():
 	if dialog_texts.is_empty():
@@ -75,8 +74,10 @@ func next_dialog():
 		return
 
 	if current_index < dialog_texts.size():
-		dialog_label.text = ""  
-		type_text(dialog_texts[current_index])
+		dialog_label.text = ""
+		# Proses teks untuk mengganti <br> dengan \n
+		var processed_text = dialog_texts[current_index].replace("<br>", "\n")
+		type_text(processed_text)
 		current_index += 1
 	else:
 		close_dialog()
@@ -88,7 +89,7 @@ func type_text(full_text: String):
 			break
 		dialog_label.text += full_text[i]
 		update_background_size()
-		await get_tree().create_timer(0.1).timeout  # Animasi ketikan
+		await get_tree().create_timer(0.1).timeout
 	
 	is_typing = false
 	if player_inside:
@@ -109,4 +110,4 @@ func close_dialog():
 	is_displaying = false
 	is_typing = false
 	set_process(false)
-	resume_player()  # Aktifkan kembali input player!
+	resume_player()

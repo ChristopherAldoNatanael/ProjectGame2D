@@ -13,7 +13,7 @@ config_version=5
 config/name="Game_2D"
 run/main_scene="res://scene/cuyrun.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/menu/Kaiju Kingz - Collection _ OpenSea.jpeg"
 
 [autoload]
 
